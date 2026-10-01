@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cisco Networking Comprehensive Mock Exam | CCNA & ITN</title>
+<meta name="description" content="Comprehensive Cisco networking mock exam in English with 185 questions covering CCNA, ITN, IPv4, IPv6, subnetting, OSI, TCP/IP, Ethernet, transport and application protocols.">
+<meta name="keywords" content="Cisco exam, CCNA questions, ITN quiz, Cisco networking mock exam, subnetting quiz, IPv6 quiz, OSI TCP IP, networking questions">
+<meta name="author" content="Eng. Raof Al-Shawye">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cisco Networking Comprehensive Mock Exam">
+<meta property="og:description" content="185-question interactive Cisco networking mock exam in English.">
+<style>
+:root {
+  --bg:#06101d; --panel:#0d1c31; --panel2:#132844; --text:#f6f9fd; --muted:#a9b9cd;
+  --line:#274462; --cyan:#43d9f4; --blue:#3b82f6; --green:#22c55e; --red:#ef4444;
+  --amber:#f59e0b; --purple:#8b5cf6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--text);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(34,211,238,.12), transparent 28%),
+    radial-gradient(circle at 90% 4%, rgba(59,130,246,.15), transparent 30%),
+    linear-gradient(145deg,#050d18,#09162a 58%,#07111f);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+}
+.wrap{max-width:980px;margin:0 auto;padding:16px}
+.header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:8px 0 16px}
+.title h1{font-size:clamp(26px,4.5vw,42px);margin:0 0 6px;line-height:1.12}
+.title p{margin:0;color:var(--muted);line-height:1.55}
+.profile{
+  min-width:270px;padding:13px 15px;border-radius:17px;border:1px solid rgba(67,217,244,.35);
+  background:linear-gradient(135deg,rgba(15,37,63,.95),rgba(11,28,49,.96));
+  box-shadow:0 14px 36px rgba(0,0,0,.25)
+}
+.profile .name{font-weight:900;font-size:17px;margin-bottom:8px}
+.profile a{color:#fff;text-decoration:none;font-weight:800;display:inline-flex;align-items:center;gap:7px;
+  background:linear-gradient(135deg,rgba(131,58,180,.35),rgba(225,48,108,.28),rgba(252,175,69,.22));
+  border:1px solid rgba(255,255,255,.15);padding:7px 10px;border-radius:10px}
+.profile a:hover{border-color:var(--cyan)}
+.hero{border:1px solid var(--line);background:rgba(10,25,45,.82);border-radius:18px;padding:15px;margin-bottom:13px}
+.hero-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.metric{background:#0a1729;border:1px solid var(--line);padding:11px;border-radius:12px;text-align:center}
+.metric b{font-size:22px;display:block} .metric span{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.toggle{display:flex;align-items:center;gap:7px;background:#0a1729;border:1px solid var(--line);padding:8px 10px;border-radius:10px;color:#dce7f5;font-size:13px}
+.btn{border:1px solid var(--line);background:#153352;color:white;padding:10px 14px;border-radius:11px;font-weight:800;cursor:pointer}
+.btn:hover{border-color:#4cbde4} .btn.primary{background:linear-gradient(90deg,#2563eb,#0891b2);border:none}
+.btn.warn{background:#402b11;border-color:#725019} .btn.review{background:#28204a;border-color:#57458d}
+.progress-shell{height:10px;background:#071321;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:12px 0 16px}
+#progress{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.2s}
+.card{background:rgba(13,28,49,.97);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 20px 50px rgba(0,0,0,.27)}
+.qtop{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.section{font-size:13px;font-weight:900;color:var(--cyan)} .qnum{font-size:13px;color:var(--muted)}
+.question{font-size:clamp(18px,3vw,23px);line-height:1.55;margin:15px 0 18px}
+.options{display:grid;gap:10px}
+.opt{width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);color:white;padding:13px 14px;border-radius:13px;cursor:pointer;font-size:15.5px;line-height:1.4;transition:.15s}
+.opt:hover{transform:translateY(-1px);border-color:#4aa9d1}
+.letter{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:8px;background:#0a172a;color:var(--cyan);font-weight:900;margin-right:9px}
+.opt.selected{box-shadow:0 0 0 2px rgba(59,130,246,.22);border-color:#3b82f6}
+.opt.good{background:rgba(34,197,94,.13);border-color:var(--green)}
+.opt.bad{background:rgba(239,68,68,.13);border-color:var(--red)}
+.feedback{display:none;margin-top:13px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#09172a;line-height:1.5}
+.feedback.show{display:block}
+.nav{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:17px}
+.nav-left,.nav-right{display:flex;gap:8px;flex-wrap:wrap}
+.navigator{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.navigator summary{cursor:pointer;color:#d8e5f3;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:10px}
+.qjump{padding:7px 0;border-radius:8px;border:1px solid var(--line);background:#0a172a;color:#dce8f8;cursor:pointer;font-size:12px}
+.qjump.answered{background:#123653} .qjump.marked{outline:2px solid var(--amber)} .qjump.current{border-color:var(--cyan);color:var(--cyan)}
+#summary,#bonus{display:none}
+.final-score{font-size:58px;font-weight:900;color:var(--cyan);margin:6px 0}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}
+.review-item{background:#0a1729;border:1px solid var(--line);border-radius:11px;padding:11px;margin:8px 0;border-left:4px solid #64748b}
+.review-item.ok{border-left-color:var(--green)} .review-item.no{border-left-color:var(--red)} .small{font-size:13px;color:var(--muted)}
+textarea{width:100%;min-height:190px;background:#081526;color:white;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:15px;resize:vertical}
+.solution{display:none;white-space:pre-wrap;line-height:1.55;background:#0a1729;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:12px}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin:16px 0}
+.footer a{color:var(--cyan);text-decoration:none;font-weight:800}
+@media(max-width:700px){
+ .wrap{padding:11px} .card{padding:15px} .hero-grid{grid-template-columns:repeat(2,1fr)} .grid{grid-template-columns:repeat(7,1fr)} .profile{width:100%}
+}
+</style>
+
+<link rel="canonical" href="https://raoofalshawye03-ai.github.io/cisco-exams/">
+<meta property="og:url" content="https://raoofalshawye03-ai.github.io/cisco-exams/">
+<meta name="google-site-verification" content="">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "Cisco Networking Comprehensive Mock Exam",
+  "description": "Interactive Cisco networking mock exam in English covering CCNA and Introduction to Networks topics.",
+  "url": "https://raoofalshawye03-ai.github.io/cisco-exams/",
+  "inLanguage": "en",
+  "educationalLevel": "Beginner to Intermediate",
+  "about": ["Cisco CCNA", "Introduction to Networks", "IPv4", "IPv6", "Subnetting", "OSI", "TCP/IP", "Ethernet"],
+  "author": {
+    "@type": "Person",
+    "name": "Eng. Raof Al-Shawye",
+    "sameAs": "https://www.instagram.com/raof_al0/"
+  }
+}
+</script>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="header">
+    <div class="title">
+      <h1>Cisco Networking Comprehensive Mock Exam</h1>
+      <p>CCNA • Introduction to Networks (ITN) • 185 Objective Questions + VLSM Design</p>
+    </div>
+    <div class="profile">
+      <div class="name">Programmed by Eng. Raof Al-Shawye</div>
+      <a href="https://www.instagram.com/raof_al0/" target="_blank" rel="noopener noreferrer">📸 @raof_al0</a>
+    </div>
+  </header>
+
+  <div id="exam">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="metric"><b id="answered">0</b><span>Answered</span></div>
+        <div class="metric"><b id="correct">0</b><span>Correct</span></div>
+        <div class="metric"><b id="remaining">185</b><span>Remaining</span></div>
+        <div class="metric"><b id="markedCount">0</b><span>Marked</span></div>
+      </div>
+      <div class="toolbar">
+        <label class="toggle"><input id="practiceMode" type="checkbox" checked> Practice Mode — show correction immediately</label>
+        <button class="btn" id="shuffleBtn">Shuffle Questions</button>
+        <button class="btn warn" id="resetBtn">Restart Exam</button>
+        <button class="btn review" id="bonusBtn">VLSM Design</button>
+      </div>
+    </section>
+
+    <div class="progress-shell"><div id="progress"></div></div>
+
+    <section class="card">
+      <div class="qtop">
+        <div class="section" id="section"></div>
+        <div class="qnum" id="qnum"></div>
+      </div>
+      <div class="question" id="question"></div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+
+      <div class="nav">
+        <div class="nav-left">
+          <button class="btn" id="prevBtn">← Previous</button>
+          <button class="btn review" id="markBtn">☆ Mark for Review</button>
+        </div>
+        <div class="nav-right">
+          <button class="btn primary" id="nextBtn">Next →</button>
+        </div>
+      </div>
+
+      <details class="navigator">
+        <summary>Question Navigator</summary>
+        <div class="grid" id="jumpGrid"></div>
+      </details>
+    </section>
+  </div>
+
+  <section class="card" id="summary">
+    <div class="small">Exam Complete</div>
+    <div class="final-score" id="finalScore"></div>
+    <div id="finalMessage"></div>
+    <div class="breakdown" id="breakdown"></div>
+    <div class="nav">
+      <button class="btn primary" id="retryBtn">Restart Full Exam</button>
+      <button class="btn review" id="openBonusFromSummary">Open VLSM Design</button>
+    </div>
+    <div id="reviewList"></div>
+  </section>
+
+  <section class="card" id="bonus">
+    <div class="section">Bonus — VLSM Design Question</div>
+    <div class="question">An organization is granted a block of addresses with the beginning address 14.24.74.0/24. The organization needs to have 3 subblocks of addresses for its three subnets:<br>(i) One subblock of 120 addresses.<br>(ii) One subblock of 50 addresses.<br>(iii) One subblock of 10 addresses.<br>Design the subnets and draw the subnetwork diagram.</div>
+    <textarea placeholder="Write your VLSM design and calculations here..."></textarea>
+    <div class="nav">
+      <button class="btn" id="backToExam">← Back to Exam</button>
+      <button class="btn primary" id="showSolution">Show Suggested Solution</button>
+    </div>
+    <div class="solution" id="solution">Suggested answer:
+1) 120 addresses → 14.24.74.0/25
+   Usable: 14.24.74.1 - 14.24.74.126
+   Broadcast: 14.24.74.127
+
+2) 50 addresses → 14.24.74.128/26
+   Usable: 14.24.74.129 - 14.24.74.190
+   Broadcast: 14.24.74.191
+
+3) 10 addresses → 14.24.74.192/28
+   Usable: 14.24.74.193 - 14.24.74.206
+   Broadcast: 14.24.74.207</div>
+  </section>
+
+  <footer class="footer">
+    Programmed by Eng. Raof Al-Shawye • <a href="https://www.instagram.com/raof_al0/" target="_blank" rel="noopener noreferrer">@raof_al0</a>
+  </footer>
+</div>
+
+<script>
+let Q = [{"section": "Section A — Final Review", "q": "For purposes of subnetting, which prefix would you use for the 172.16.0.0/16 network to create 80 subnets for your company's various LANs? [M11]", "o": ["/21", "/22", "/23", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "Subnet 150.20.0.0 to support 500 hosts per subnet. What is the new subnet mask? [M11]", "o": ["255.255.255.0", "255.255.0.0", "255.255.254.0", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "Which subnet does host 192.168.5.57/27 belong to? [M11]", "o": ["192.168.5.0/27", "192.168.5.32/27", "192.168.5.64/27", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "How many usable host addresses are available on a /26 subnet? [M11]", "o": ["30", "62", "126", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "What is the prefix length notation for the subnet mask 255.255.255.224? [M11]", "o": ["/25", "/26", "/27", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "An IPv6 address is how many bytes long? [M12]", "o": ["4", "8", "16", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "The IPv6 address FE80::1 belongs to which type? [M12]", "o": ["Global unicast", "Link-local", "Multicast", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which method lets a host build its own IPv6 address using the RA message and the EUI-64 process? [M12]", "o": ["Stateful DHCPv6", "SLAAC", "Stateless DHCPv6", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "What statement describes the function of the Address Resolution Protocol? [M9]", "o": ["ARP discovers the IP address of a host on a different network", "ARP discovers the MAC address of a host on the local network", "ARP discovers the MAC address of a host on a different network", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which OSI layer adds a header containing the logical (IP) addresses of the sender and receiver? [OSI]", "o": ["Data link", "Transport", "Network", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "Which OSI layer establishes, maintains and synchronizes the interaction between communicating devices? [OSI]", "o": ["Physical", "Transport", "Session", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "How many layers does the TCP/IP model have, compared to the OSI model? [TCP/IP]", "o": ["4 layers, versus 7 for OSI", "5 layers, versus 7 for OSI", "7 layers, versus 4 for OSI", "None of the mentioned"], "a": 0}, {"section": "Section A — Final Review", "q": "Which TCP/IP layer combines the OSI Application, Presentation and Session layers? [TCP/IP]", "o": ["Network Access", "Internet", "Application", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "What is the PDU of the transport layer called? [Encapsulation]", "o": ["Packet", "Segment", "Frame", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "As data moves down the stack at the sender, what is the correct PDU order? [Encapsulation]", "o": ["Data, Packet, Segment, Frame", "Data, Segment, Packet, Frame", "Data, Frame, Segment, Packet", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Source and destination MAC addresses in a frame change at every router hop, while source and destination IP addresses stay the same. Which statement is correct? [Encapsulation]", "o": ["Both statements are true", "Only the MAC part is true", "Only the IP part is true", "None of the mentioned"], "a": 0}, {"section": "Section A — Final Review", "q": "Which switch forwarding method reads the entire frame and checks the FCS before forwarding it? [M7]", "o": ["Cut-through", "Fragment-free", "Store-and-forward", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "What is the minimum size of a valid Ethernet frame (excluding the preamble)? [M7]", "o": ["46 bytes", "64 bytes", "128 bytes", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which sublayer of the data link layer communicates directly with the network layer above it? [M7]", "o": ["MAC", "LLC", "Physical", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "What is contained in the trailer of a data-link frame? [M7 / midterm]", "o": ["A logical address", "A physical address", "Error detection (FCS)", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "What is the correct order of the TCP three-way handshake? [M14]", "o": ["SYN, ACK, SYN-ACK", "SYN, SYN-ACK, ACK", "SYN-ACK, SYN, ACK", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "A socket is the combination of which two values? [M14]", "o": ["MAC address and port number", "IP address and port number", "IP address and sequence number", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which protocol is preferred for real-time voice and video because it has lower overhead than TCP? [M14]", "o": ["FTP", "HTTP", "UDP", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "The well-known port numbers range from which values? [M14]", "o": ["0 to 1023", "1024 to 49151", "49152 to 65535", "None of the mentioned"], "a": 0}, {"section": "Section A — Final Review", "q": "Which protocol translates a domain name such as example.com into an IP address? [M15]", "o": ["DHCP", "DNS", "ARP", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which two ports does DHCPv4 use for client and server messages? [M15]", "o": ["UDP 67 (server) and 68 (client)", "TCP 20 and 21", "UDP 53 and 80", "None of the mentioned"], "a": 0}, {"section": "Section A — Final Review", "q": "Which application layer protocol provides file-sharing and print services to Microsoft applications? [M15]", "o": ["HTTP", "SMB", "SMTP", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which HTTP message type does a client use to request data from a web server? [M15]", "o": ["GET", "POST", "PUT", "None of the mentioned"], "a": 0}, {"section": "Section A — Final Review", "q": "Which type of malware is a standalone program that replicates itself across a network without needing a host file? [M16]", "o": ["Virus", "Worm", "Trojan horse", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "A network of infected computers controlled remotely by an attacker to launch a coordinated DDoS attack is called a ______. [M16]", "o": ["VLAN", "botnet", "subnet", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which firewall technique tracks the state of active connections and only allows return traffic that matches a known outbound request? [M16]", "o": ["Packet filtering", "Stateful packet inspection", "URL filtering", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which protocol should replace Telnet for secure remote management of a network device? [M16]", "o": ["FTP", "HTTP", "SSH", "None of the mentioned"], "a": 2}, {"section": "Section A — Final Review", "q": "What is the purpose of a network baseline? [M17]", "o": ["To speed up network traffic", "To record normal performance so abnormal behavior can be recognized later", "To assign IP addresses automatically", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Which command tests whether the TCP/IP stack is working correctly on the local host itself? [M13]", "o": ["ping 127.0.0.1", "ping the default gateway", "tracert 8.8.8.8", "None of the mentioned"], "a": 0}, {"section": "Section A — Final Review", "q": "Which ICMP message does a router send back when a packet's TTL reaches zero, and which tool relies on it? [M13]", "o": ["Destination Unreachable - used by ping", "Time Exceeded - used by traceroute", "Echo Reply - used by DNS", "None of the mentioned"], "a": 1}, {"section": "Section A — Final Review", "q": "Ethernet uses a 6-byte (48-bit) physical address that is imprinted on the network interface card (NIC). [M7 / midterm]", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section A — Final Review", "q": "Flow control is a function of the transport layer. [OSI / midterm]", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section A — Final Review", "q": "Radio waves are omnidirectional, while microwaves are unidirectional. [midterm]", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section A — Final Review", "q": "In IPv6, the double colon (::) may be used more than once in the same address to shorten it. [M12]", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section A — Final Review", "q": "The type of IPv6 address FE80::1 is multicast. [M12 / midterm]", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section A — Final Review", "q": "Switch ports operate in full-duplex mode, so collisions do not occur. [M6/M7]", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section A — Final Review", "q": "IPv6 hosts use ARP to resolve a neighbor's MAC address, exactly as IPv4 does. [M9 - IPv6 uses ICMPv6 NS/NA instead]", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section A — Final Review", "q": "A network administrator subnetting 192.168.10.0/24 with /26 masks creates 4 equal-sized subnets. [M11]", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section A — Final Review", "q": "UDP guarantees reliable, ordered delivery of data using acknowledgments. [M14 - UDP is connectionless/best-effort]", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section A — Final Review", "q": "An unauthorized user gaining access to network resources is considered a network security issue. [M16]", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "The ______ layer adds a header to the packet coming from the upper layer that includes the logical addresses of the sender and receiver.", "o": ["data link", "network", "physical", "none of the above"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "The ______ layer establishes, maintains, and synchronizes the interactions between communicating devices.", "o": ["data link", "physical", "transport", "none of the mentioned"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "______ are used for short-range communications such as those between a PC and a peripheral device.", "o": ["Radio waves", "Infrared waves", "Microwaves", "none of the above"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "To deliver a message to the correct application program running on a host, the ______ address must be consulted.", "o": ["physical", "port", "IP", "none of the above"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "Signals with a frequency above 30 MHz use ______ propagation.", "o": ["line-of-sight", "sky", "ground", "none of the above"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "Subnet the Address 150.20.0.0 into networks supporting 500 Hosts each. What is the New Subnet Mask and the IP Address Range of the first Network? explain", "o": ["Subnet Mask 255.255.255.0, Range 150.20.0.0 - 150.20.0.255", "Subnet Mask 255.255.0.0, Range 150.20.0.0 - 150.20.1.255", "Subnet Mask 255.255.255.254, Range 150.20.0.0 - 150.20.255.255", "Subnet mask 255.255.254.0, range 150.20.0.1 - 150.20.1.254"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "Which subnet does host 192.168.5.57/27 belong to? explain", "o": ["192.168.5.32/27", "192.168.5.64/25", "192.168.5.0/27", "192.168.1.192/27"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "What statement describes the function of the Address Resolution Protocol?", "o": ["ARP is used to discover the IP address of any host on a different network.", "ARP is used to discover the IP address of any host on the local network.", "ARP is used to discover the MAC address of any host on a different network.", "ARP is used to discover the MAC address of any host on the local network."], "a": 3}, {"section": "Section B — Repeated Questions", "q": "Subnet the IP Address 210.30.12.0, so there are 60 Hosts in each network. What are the Broadcast Addresses of each Network? explain", "o": ["210.30.12.63, 127, 191, and 255", "210.30.12.64, 128,192, and 255", "210.30.12.255", "210.30.12.0"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "IPv6 has ______ -byte addresses", "o": ["4", "8", "12", "none of the mentioned"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "You have been given the 172.18.0.0/16 network. Your company requires 250 subnets with the same number of hosts per subnet. How many usable host addresses in this prefix? explain", "o": ["190", "224", "254", "126"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "Which subnet mask would be used if 5 host bits are available?", "o": ["255.255.255.0", "255.255.255.128", "255.255.255.224", "255.255.255.240"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "You are given the IP Address of 193.103.20.0/24 and need 50 Subnets. How many hosts per network, and total networks do you get once subnetted? explain", "o": ["20 Hosts and 50 Subnets", "6 Hosts and 64 Subnets", "4 Hosts and 50 Subnets", "2 Hosts and 64 Subnets"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "How many host addresses are available on the network 172.16.128.0 with a subnet mask of 255.255.252.0? explain", "o": ["510", "512", "1022", "1024"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "What is the prefix length notation for the subnet mask 255.255.255.224?", "o": ["/25", "/26", "/27", "/28"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "What is the prefix for the host address 2001:DB8:BC15:A::1/64?", "o": ["2001:DB8:BC15", "2001:DB8:BC15:A", "2001:DB8:BC15:A:1", "2001:DB8:BC15:A:12"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "What is contained in the trailer of a data-link frame?", "o": ["logical address", "physical address", "data", "error detection"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "A message is sent to all hosts on a remote network. Which type of message is it?", "o": ["limited broadcast", "multicast", "directed broadcast", "unicast"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "You have been given the 172.16.0.0/16 network. You are asked to create 80 subnets for your company's various LANs. What prefix length should you use? explain", "o": ["/23", "/22", "/21", "/20"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "An administrator wants to configure hosts to automatically assign IPv6 addresses to themselves by the use of Router Advertisement messages, but also to obtain the DNS server address from a DHCPv6 server. Which address assignment method should be configured?", "o": ["SLAAC", "stateless DHCPv6", "stateful DHCPv6", "RA and EUI-64"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "Which device performs the function of determining the path that messages should take through internetworks?", "o": ["a router", "a firewall", "a Switch", "a DSL modem"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "Which networking trend involves the use of personal tools and devices for accessing resources on a business or campus network?", "o": ["video conferencing", "cloud computing", "BYOD", "powerline networking"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "What method can be used by two computers to ensure that packets are not dropped because too much data is being sent too quickly?", "o": ["encapsulation", "flow control", "access method", "response timeout"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "Which group of protocols are all part of the TCP/IP application layer?", "o": ["ARP, IP, DNS", "DHCP, DNS, FTP", "NAT, IP, FTP", "PPP, UDP, TCP"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "Which PDU is processed when a host computer is de-encapsulating a message at the transport layer of the TCP/IP model?", "o": ["bits", "frame", "packet", "segment"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "Which address does a NIC use when deciding whether to accept a frame?", "o": ["source IP address", "source MAC address", "destination IP address", "destination MAC address"], "a": 3}, {"section": "Section B — Repeated Questions", "q": "What is a characteristic of multicast messages?", "o": ["They are sent to a select group of hosts.", "They are sent to all hosts on a network.", "They must be acknowledged.", "They are sent to a single destination."], "a": 0}, {"section": "Section B — Repeated Questions", "q": "How many valid host addresses are available on an IPv4 subnet that is configured with a /26 mask? explain", "o": ["254", "190", "62", "64"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "A network administrator subnets the 192.168.10.0/24 network into subnets with /26 masks. How many equal-sized subnets are created?", "o": ["1", "2", "4", "8"], "a": 2}, {"section": "Section B — Repeated Questions", "q": "An administrator wants to create four subnetworks from the network address 192.168.1.0/24. What is the network address and subnet mask of the second useable subnet?", "o": ["subnetwork 192.168.1.64, subnet mask 255.255.255.192", "subnetwork 192.168.1.32, subnet mask 255.255.255.240", "subnetwork 192.168.1.64, subnet mask 255.255.255.240", "subnetwork 192.168.1.128, subnet mask 255.255.255.192"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "Ethernet uses a 8-byte physical address that is imprinted on the network interface card (NIC).", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "Flow control takes place at transport layer.", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "Radio waves are omnidirectional.", "o": ["TRUE", "FALSE"], "a": 0}, {"section": "Section B — Repeated Questions", "q": "The shortest abbreviation for the IP address: 3FFE:1044:0000:0000:00AB:0000:0000:0057 is 3FFE:1044::00AB::0057", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section B — Repeated Questions", "q": "The type of IPv6 address FE80::1 is multicast", "o": ["TRUE", "FALSE"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which three elements are present in any communication?", "o": ["Source, destination, and channel", "Router, switch, and firewall", "Encoding, decoding, and encrypting", "Segment, packet, and frame"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "All communications are governed by …………….", "o": ["chance", "protocols", "the physical layer only", "the application only"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Protocols are best described as …………….", "o": ["the rules that communications will follow", "only used in software, never hardware", "identical across every network", "optional guidelines with no real effect"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Individuals must use established rules or agreements to …………….", "o": ["govern the conversation", "avoid using any protocol", "bypass the destination address", "eliminate the need for a channel"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which is NOT one of the requirements protocols must account for according to Rule Establishment?", "o": ["An identified sender and receiver", "Common language and grammar", "Confirmation or acknowledgment requirements", "Physical color of the network cable"], "a": 3}, {"section": "Section C — Protocols & Models", "q": "Which of the following is a common computer protocol requirement?", "o": ["Message encoding", "Cable color coding", "Device brand compatibility only", "Router chassis size"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Encoding is the process of …………….", "o": ["converting information into another acceptable form for transmission", "deleting corrupted data permanently", "assigning IP addresses to hosts", "selecting the best path through a network"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Decoding reverses the encoding process to …………….", "o": ["interpret the information", "corrupt the data intentionally", "reassign MAC addresses", "increase the MTU size"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Message formats depend on …………….", "o": ["the type of message and the channel used to deliver it", "only the destination MAC address", "only the physical cable length", "the color of the network icon"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Messages sent across the network are converted to …………….", "o": ["bits", "only sound", "only light", "only a printed format"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which message timing concept manages the rate of data transmission?", "o": ["Flow Control", "Response Timeout", "Access Method", "Acknowledgment"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which message timing concept manages how long a device waits for a reply?", "o": ["Flow Control", "Response Timeout", "Access Method", "Encoding"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which message timing concept determines when someone can send a message?", "o": ["Flow Control", "Response Timeout", "Access Method", "Decoding"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "A collision occurs when …………….", "o": ["more than one device sends traffic at the same time and messages become corrupt", "a single device sends one message", "a router forwards a packet correctly", "a message is properly acknowledged"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Some protocols are proactive and attempt to …………….", "o": ["prevent collisions", "cause collisions intentionally", "ignore collisions entirely", "increase collisions for testing"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which message delivery option describes one-to-one communication?", "o": ["Unicast", "Multicast", "Broadcast", "Anycast"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which message delivery option describes one-to-many, typically not all, communication?", "o": ["Unicast", "Multicast", "Broadcast", "Anycast"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which message delivery option describes one-to-all communication?", "o": ["Unicast", "Multicast", "Broadcast", "Anycast"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Broadcast delivery is used in IPv4 networks but is NOT an option in …………….", "o": ["IPv6", "Ethernet", "TCP/IP", "OSI"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Network protocols define …………….", "o": ["a common set of rules", "a single hardware vendor's product line", "only physical cabling standards", "only wireless frequency bands"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Protocols can be implemented on devices in …………….", "o": ["software only", "hardware only", "software, hardware, or both", "neither software nor hardware"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which protocol type enables two or more devices to communicate over one or more networks?", "o": ["Network Security", "Network Communications", "Routing", "Service Discovery"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which protocol type secures data to provide authentication, integrity, and encryption?", "o": ["Network Communications", "Network Security", "Routing", "Service Discovery"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which protocol type enables routers to exchange route information and select the best path?", "o": ["Network Communications", "Network Security", "Routing", "Service Discovery"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which protocol type is used for automatic detection of devices or services?", "o": ["Network Communications", "Network Security", "Routing", "Service Discovery"], "a": 3}, {"section": "Section C — Protocols & Models", "q": "Which network protocol function identifies the sender and receiver?", "o": ["Addressing", "Reliability", "Flow Control", "Sequencing"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which network protocol function provides guaranteed delivery?", "o": ["Addressing", "Reliability", "Flow Control", "Error Detection"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which network protocol function ensures data flows at an efficient rate?", "o": ["Reliability", "Flow Control", "Sequencing", "Addressing"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which network protocol function uniquely labels each transmitted segment of data?", "o": ["Reliability", "Flow Control", "Sequencing", "Error Detection"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which network protocol function determines if data became corrupted during transmission?", "o": ["Sequencing", "Flow Control", "Error Detection", "Addressing"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which network protocol function provides process-to-process communications between network applications?", "o": ["Application Interface", "Reliability", "Flow Control", "Sequencing"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which protocol governs the way a web server and web client interact and defines content and format?", "o": ["HTTP", "TCP", "IP", "Ethernet"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which protocol manages individual conversations, provides guaranteed delivery, and manages flow control?", "o": ["HTTP", "TCP", "IP", "Ethernet"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which protocol delivers messages globally from sender to receiver?", "o": ["HTTP", "TCP", "IP", "Ethernet"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which protocol delivers messages from one NIC to another NIC on the same LAN?", "o": ["HTTP", "TCP", "IP", "Ethernet"], "a": 3}, {"section": "Section C — Protocols & Models", "q": "A protocol suite is best described as …………….", "o": ["a group of inter-related protocols necessary to perform a communication function", "a single isolated protocol with no relation to others", "a hardware device that replaces protocols", "a physical cable standard only"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "In a protocol suite, the lower layers are primarily concerned with …………….", "o": ["moving data and providing services to upper layers", "only user interface design", "only application-level encryption", "only billing and licensing"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which protocol suite is the most common and maintained by the IETF?", "o": ["AppleTalk", "Novell NetWare", "Internet Protocol Suite (TCP/IP)", "OSI protocols"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "The OSI protocols were developed by …………….", "o": ["Apple Inc. only", "Novell Inc. only", "ISO and ITU", "Microsoft only"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "AppleTalk is described as …………….", "o": ["an open standard used by all vendors", "a proprietary suite released by Apple Inc.", "the most common suite on the internet", "developed by ISO"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Novell NetWare is described as …………….", "o": ["an open standard suite", "a proprietary suite developed by Novell Inc.", "the current internet standard", "developed by the IETF"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "TCP/IP protocols operate at which layers?", "o": ["Physical, data link, and network only", "Application, transport, and internet", "Presentation and session only", "Only the network access layer"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "The most common network access layer LAN protocols are …………….", "o": ["Ethernet and WLAN", "HTTP and FTP", "TCP and UDP", "DNS and DHCP"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "TCP/IP is described as an open standard protocol suite, meaning it is …………….", "o": ["freely available to the public and usable by any vendor", "owned exclusively by one company", "only usable with proprietary hardware", "restricted to government use only"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "TCP/IP being standards-based means it is …………….", "o": ["endorsed by the networking industry and approved by a standards organization", "created privately with no oversight", "only used in a single country", "unrelated to interoperability"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Open standards encourage …………….", "o": ["interoperability, competition, and innovation", "monopolies and vendor lock-in", "proprietary-only development", "higher prices with less choice"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Standards organizations are typically …………….", "o": ["vendor-neutral, non-profit organizations", "for-profit hardware manufacturers", "government military agencies only", "single-vendor consortiums"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which organization promotes the open development and evolution of the internet?", "o": ["IETF", "ISOC", "IANA", "ICANN"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which organization is responsible for the overall management and development of internet standards?", "o": ["IAB", "IETF", "IRTF", "ICANN"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which organization develops, updates, and maintains internet and TCP/IP technologies?", "o": ["IAB", "IETF", "ISOC", "ICANN"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which organization is focused on long-term research related to internet and TCP/IP protocols?", "o": ["IETF", "IAB", "IRTF", "IANA"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which organization coordinates IP address allocation, domain name management, and assignment of other identifiers?", "o": ["ICANN", "IEEE", "EIA", "TIA"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which organization oversees and manages IP address allocation and protocol identifiers on behalf of ICANN?", "o": ["IANA", "IAB", "IRTF", "ISOC"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which organization is dedicated to creating standards in power, energy, healthcare, telecommunications, and networking?", "o": ["IEEE", "EIA", "TIA", "ITU-T"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which organization develops standards relating to electrical wiring, connectors, and equipment racks?", "o": ["IEEE", "EIA", "TIA", "ITU-T"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Which organization develops communication standards for radio equipment, cellular towers, and VoIP devices?", "o": ["IEEE", "EIA", "TIA", "ITU-T"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "Which organization defines standards for video compression, IPTV, and broadband communications such as DSL?", "o": ["IEEE", "EIA", "TIA", "ITU-T"], "a": 3}, {"section": "Section C — Protocols & Models", "q": "A layered model is used because …………….", "o": ["complex concepts such as how a network operates can be difficult to explain otherwise", "it eliminates the need for any protocol", "it removes the need for standards organizations", "it simplifies hardware manufacturing only"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which two layered models describe network operations?", "o": ["OSI and TCP/IP", "HTTP and FTP", "IEEE and EIA", "IANA and ICANN"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which is a benefit of using a layered model?", "o": ["It assists in protocol design with defined interfaces between layers", "It forces all vendors to use identical hardware", "It prevents any competition between vendors", "It eliminates the need for addressing"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "A benefit of a layered model is that it prevents …………….", "o": ["changes in one layer from affecting other layers", "any two devices from communicating", "protocols from having defined functions", "standards organizations from operating"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer contains protocols for process-to-process communications?", "o": ["Layer 7 - Application", "Layer 4 - Transport", "Layer 3 - Network", "Layer 1 - Physical"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer provides common representation of data transferred between application services?", "o": ["Application", "Presentation", "Session", "Transport"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer provides services to the presentation layer and manages data exchange?", "o": ["Session", "Transport", "Network", "Data Link"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer segments, transfers, and reassembles data for individual communications?", "o": ["Session", "Transport", "Network", "Data Link"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer provides services to exchange individual pieces of data over the network?", "o": ["Transport", "Network", "Data Link", "Physical"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer describes methods for exchanging data frames over a common media?", "o": ["Network", "Data Link", "Physical", "Session"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "In the OSI model, which layer describes the means to activate, maintain, and deactivate physical connections?", "o": ["Data Link", "Physical", "Network", "Transport"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "How many layers does the OSI model have?", "o": ["Four", "Five", "Six", "Seven"], "a": 3}, {"section": "Section C — Protocols & Models", "q": "How many layers does the TCP/IP model have?", "o": ["Four", "Five", "Six", "Seven"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "In the TCP/IP model, which layer represents data to the user, plus encoding and dialog control?", "o": ["Application", "Transport", "Internet", "Network Access"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "In the TCP/IP model, which layer supports communication between various devices across diverse networks?", "o": ["Application", "Transport", "Internet", "Network Access"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "In the TCP/IP model, which layer determines the best path through the network?", "o": ["Application", "Transport", "Internet", "Network Access"], "a": 2}, {"section": "Section C — Protocols & Models", "q": "In the TCP/IP model, which layer controls the hardware devices and media that make up the network?", "o": ["Application", "Transport", "Internet", "Network Access"], "a": 3}, {"section": "Section C — Protocols & Models", "q": "The OSI model divides which two TCP/IP model layers into multiple layers?", "o": ["Transport and Internet", "Network access and application layers", "Only the application layer", "Only the internet layer"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Segmenting is the process of …………….", "o": ["breaking up messages into smaller units", "combining multiple messages into one large unit", "encrypting a message permanently", "removing headers from a message"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Multiplexing is the process of …………….", "o": ["taking multiple streams of segmented data and interleaving them together", "splitting a single stream into unrelated networks", "assigning MAC addresses to segments", "converting frames into packets"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Segmenting messages increases speed because …………….", "o": ["large amounts of data can be sent without tying up a communications link", "it removes the need for any acknowledgment", "it prevents any retransmission", "it eliminates flow control"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Segmenting messages increases efficiency because …………….", "o": ["only segments which fail to reach the destination need to be retransmitted", "the entire data stream must always be retransmitted", "segments never need retransmission", "efficiency is unrelated to segmenting"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Sequencing messages is the process of …………….", "o": ["numbering the segments so the message may be reassembled at the destination", "removing segments to reduce network load", "assigning IP addresses to segments", "encrypting the payload of each segment"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which protocol is responsible for sequencing individual segments?", "o": ["IP", "TCP", "Ethernet", "ARP"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "Encapsulation is the process where …………….", "o": ["protocols add their information to the data", "data is permanently deleted", "a router selects the best path", "MAC addresses are translated to IP addresses"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "At each stage of encapsulation, a PDU …………….", "o": ["has a different name to reflect its new functions", "always keeps the exact same name", "loses all previously added headers", "becomes unreadable"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Which sequence correctly lists the PDUs as data moves down the TCP/IP stack?", "o": ["Data, Segment, Packet, Frame, Bits", "Bits, Frame, Packet, Segment, Data", "Segment, Data, Frame, Packet, Bits", "Packet, Segment, Frame, Data, Bits"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Encapsulation is described as a ……………. process.", "o": ["bottom-up", "top-down", "random-order", "reverse-only"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "During encapsulation, each layer …………….", "o": ["performs its process and passes it down to the next layer until sent as a bit stream", "skips the layer below it entirely", "removes all previous headers", "converts the data directly to an IP address"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "De-encapsulation occurs as data …………….", "o": ["moves up the stack", "moves down the stack only", "is discarded by the router", "is encrypted at the physical layer"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "During de-encapsulation, when a layer completes its process, it …………….", "o": ["strips off its header and passes the data up to the next layer", "adds a new header and passes data down", "deletes the entire message", "broadcasts the message to all hosts"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Both the data link and network layers use ……………. to deliver data from source to destination.", "o": ["addressing", "compression only", "encryption only", "multiplexing only"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Network layer addresses are responsible for delivering the IP packet from …………….", "o": ["the original source to the final destination", "one NIC to another NIC on the same network only", "the router to the DNS server only", "the switch to the hub only"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "Data link layer addresses are responsible for delivering the frame from …………….", "o": ["one NIC to another NIC on the same network", "the original source to the final remote destination directly", "one continent to another without routers", "the application layer to the transport layer"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "An IP packet contains which two addresses?", "o": ["Source IP address and destination IP address", "Source MAC and destination MAC", "Source port and destination port only", "TTL and checksum only"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "An IP address contains which two parts?", "o": ["Network portion and host portion (or prefix and interface ID)", "Only a host portion", "Only a checksum and a TTL", "Source port and destination port"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "The left-most part of an IPv4 address indicates …………….", "o": ["the network group to which the address belongs", "the specific device only", "the MAC address of the NIC", "the default gateway's port number"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "The host portion of an IPv4 address (or Interface ID in IPv6) …………….", "o": ["is unique for each device on the network", "is identical for every device in a network", "identifies the network group only", "never changes even when devices change networks"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "When two devices are on the same network, their addresses share the same …………….", "o": ["network portion", "host portion only", "MAC address", "default gateway address only, not the network portion"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "When devices are on the same Ethernet network, the data link frame uses …………….", "o": ["the actual MAC address of the destination NIC", "the destination IP address only", "the router's WAN IP address", "a broadcast MAC address only, never a unicast one"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "MAC addresses are …………….", "o": ["physically embedded into the Ethernet NIC and used for local addressing", "assigned dynamically by DNS", "the same as the IP address", "only used for remote/global addressing"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "The destination MAC address will always be …………….", "o": ["on the same link as the source, even if the ultimate destination is remote", "the address of the final remote destination directly", "identical to the destination IP address", "unused when communicating locally"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "When source and destination are on different networks, they have a different …………….", "o": ["host portion only", "network portion of their IP address", "MAC address prefix only", "physical cable type"], "a": 1}, {"section": "Section C — Protocols & Models", "q": "When the final destination is remote, Layer 3 provides Layer 2 with …………….", "o": ["the local default gateway IP address", "the destination's exact MAC address directly", "the destination's IP address only", "a random MAC address"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "The default gateway is …………….", "o": ["the router interface IP address that is part of the LAN, acting as the gateway to remote locations", "only used for DNS resolution", "a device found only on the internet backbone", "the same as a DHCP server"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "If devices on a LAN are not told about the default gateway address, their traffic …………….", "o": ["will be confined to the LAN only", "will still reach remote destinations directly", "will automatically use IPv6 instead", "will always be broadcast"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "While Layer 2 (MAC) addressing changes from hop to hop, Layer 3 (IP) addressing …………….", "o": ["remains the same from source to final destination", "also changes at every hop", "is removed after the first hop", "becomes a MAC address after one hop"], "a": 0}, {"section": "Section C — Protocols & Models", "q": "As a packet travels across multiple routers, the frame is ……………. while the packet's IP addressing does not change.", "o": ["changed at each hop", "never changed", "deleted at each hop", "duplicated at each hop"], "a": 0}];
+let current = 0;
+let answers = Array(Q.length).fill(null);
+let marked = Array(Q.length).fill(false);
+const letters = ['A','B','C','D'];
+const $ = id => document.getElementById(id);
+
+function scoreNow(){
+  return answers.reduce((s,a,i)=>s + (a === Q[i].a ? 1 : 0), 0);
+}
+
+function updateStats(){
+  const answered = answers.filter(a => a !== null).length;
+  $('answered').textContent = answered;
+  $('correct').textContent = scoreNow();
+  $('remaining').textContent = Q.length - answered;
+  $('markedCount').textContent = marked.filter(Boolean).length;
+  $('progress').style.width = (answered / Q.length * 100) + '%';
+}
+
+function buildNavigator(){
+  const g = $('jumpGrid');
+  g.innerHTML = '';
+  Q.forEach((x,idx)=>{
+    const b = document.createElement('button');
+    b.className = 'qjump' +
+      (answers[idx] !== null ? ' answered' : '') +
+      (marked[idx] ? ' marked' : '') +
+      (idx === current ? ' current' : '');
+    b.textContent = idx + 1;
+    b.onclick = () => { current = idx; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+    g.appendChild(b);
+  });
+}
+
+function render(){
+  const x = Q[current];
+  $('section').textContent = x.section;
+  $('qnum').textContent = `Question ${current+1} of ${Q.length}`;
+  $('question').textContent = x.q;
+  $('options').innerHTML = '';
+  $('feedback').className = 'feedback';
+  $('feedback').innerHTML = '';
+
+  x.o.forEach((text,idx)=>{
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.innerHTML = `<span class="letter">${letters[idx]}</span>${text}`;
+
+    if (answers[current] === idx) b.classList.add('selected');
+
+    if ($('practiceMode').checked && answers[current] !== null) {
+      if (idx === x.a) b.classList.add('good');
+      if (idx === answers[current] && answers[current] !== x.a) b.classList.add('bad');
+    }
+
+    b.onclick = () => {
+      answers[current] = idx;
+      render();
+    };
+    $('options').appendChild(b);
+  });
+
+  if ($('practiceMode').checked && answers[current] !== null) {
+    const ok = answers[current] === x.a;
+    $('feedback').className = 'feedback show';
+    $('feedback').innerHTML = ok
+      ? '✅ <b>Correct</b>'
+      : `❌ <b>Incorrect</b> — Correct answer: <b>${letters[x.a]}) ${x.o[x.a]}</b>`;
+  }
+
+  $('prevBtn').disabled = current === 0;
+  $('nextBtn').textContent = current === Q.length - 1 ? 'Finish Exam' : 'Next →';
+  $('markBtn').textContent = marked[current] ? '★ Marked for Review' : '☆ Mark for Review';
+  updateStats();
+  buildNavigator();
+}
+
+$('practiceMode').onchange = render;
+
+$('prevBtn').onclick = () => {
+  if (current > 0) { current--; render(); }
+};
+
+$('nextBtn').onclick = () => {
+  if (current < Q.length - 1) {
+    current++; render();
+    window.scrollTo({top:0,behavior:'smooth'});
+  } else {
+    finishExam();
+  }
+};
+
+$('markBtn').onclick = () => {
+  marked[current] = !marked[current];
+  render();
+};
+
+$('shuffleBtn').onclick = () => {
+  if (!confirm('Shuffle the entire exam? Your current answers will be cleared.')) return;
+  for (let i=Q.length-1;i>0;i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [Q[i],Q[j]] = [Q[j],Q[i]];
+  }
+  current=0; answers=Array(Q.length).fill(null); marked=Array(Q.length).fill(false);
+  render();
+};
+
+function resetExam(){
+  current=0; answers=Array(Q.length).fill(null); marked=Array(Q.length).fill(false);
+  $('summary').style.display='none';
+  $('bonus').style.display='none';
+  $('exam').style.display='block';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+$('resetBtn').onclick = () => {
+  if(confirm('Restart the full exam and clear all answers?')) resetExam();
+};
+$('retryBtn').onclick = resetExam;
+
+function finishExam(){
+  const answered = answers.filter(a=>a!==null).length;
+  if (answered < Q.length && !confirm(`You still have ${Q.length-answered} unanswered question(s). Finish anyway?`)) return;
+
+  const score = scoreNow();
+  const pct = Math.round(score/Q.length*100);
+  $('exam').style.display='none';
+  $('bonus').style.display='none';
+  $('summary').style.display='block';
+  $('finalScore').textContent = `${score} / ${Q.length} (${pct}%)`;
+  $('finalMessage').textContent =
+    pct >= 90 ? 'Excellent — strong Cisco networking readiness.' :
+    pct >= 80 ? 'Very good — review the missed questions.' :
+    pct >= 70 ? 'Good — focus on weak topics before the final.' :
+    'Review the incorrect questions and repeat the mock exam.';
+
+  const secs = [...new Set(Q.map(x=>x.section))];
+  $('breakdown').innerHTML='';
+  secs.forEach(sec=>{
+    const ids = Q.map((x,i)=>x.section===sec?i:null).filter(x=>x!==null);
+    const got = ids.reduce((s,i)=>s+(answers[i]===Q[i].a?1:0),0);
+    const box=document.createElement('div');
+    box.className='metric';
+    box.innerHTML=`<b>${got} / ${ids.length}</b><span>${sec}</span>`;
+    $('breakdown').appendChild(box);
+  });
+
+  $('reviewList').innerHTML='<h3>Answer Review</h3>';
+  Q.forEach((x,i)=>{
+    const ok=answers[i]===x.a;
+    const d=document.createElement('div');
+    d.className='review-item '+(ok?'ok':'no');
+    const yours=answers[i]===null?'Not answered':`${letters[answers[i]]}) ${x.o[answers[i]]}`;
+    d.innerHTML=`<b>Q${i+1} — ${ok?'✅ Correct':'❌ Incorrect'}</b>
+      <br><span class="small">Your answer: ${yours}</span>
+      ${ok?'':`<br><span class="small">Correct: ${letters[x.a]}) ${x.o[x.a]}</span>`}`;
+    $('reviewList').appendChild(d);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openBonus(){
+  $('exam').style.display='none';
+  $('summary').style.display='none';
+  $('bonus').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+$('bonusBtn').onclick = openBonus;
+$('openBonusFromSummary').onclick = openBonus;
+$('backToExam').onclick = () => {
+  $('bonus').style.display='none';
+  $('exam').style.display='block';
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+$('showSolution').onclick = () => {
+  const s=$('solution');
+  s.style.display = s.style.display==='block' ? 'none' : 'block';
+};
+
+render();
+</script>
+</body>
+</html>
